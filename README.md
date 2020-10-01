@@ -1,6 +1,6 @@
 # MEC-Demonstrator
 A Playground to learn coding within a Multi-Access Edge Computing Application
-###Im Folgenden wird die Roadmap für die MEC-Entwicklungsumgebung beschrieben:
+### Im Folgenden wird die Roadmap für die MEC-Entwicklungsumgebung beschrieben:
 
 „Entwicklungsumgebung“ soll verdeutlichen dass Studenten und Mitarbeiter ihre Programmierkenntnisse dauerhaft vertiefen können und das Produkt nie fertig sein wird (Continuous Improvement).
 
