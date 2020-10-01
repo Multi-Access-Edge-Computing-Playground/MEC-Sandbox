@@ -1,0 +1,6 @@
+0  Elevator_Panel1
+1  Call_Elevator1
+2  Elevator_Panel2
+3  Call_Elevator2
+4  Elevator_Panel3
+5  Call_Elevator3
