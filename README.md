@@ -49,4 +49,9 @@ Wrap the whole code into a function that returns
 * the maxWidth variable (that will be used later to calculate the height of the camera relative to the robot)
 
 #### 3. Connect to the robot to use a QR-Code to calibrate and then pick up a cube with the contour detector
+lets hoock up to the Universal Robots UR5
+
+![UR5 on MiR](models/Mir_01.jpg)
+
 ... to be continued
+
