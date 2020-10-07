@@ -11,7 +11,36 @@ A Playground to learn coding within a Multi-Access Edge Computing Application
 * Step 7: Generate a (good looking) demonstrator from the development environment. Similar to the KUKA Innovation Award, an end effector with integrated Raspberry Pi (contains all modules), accelerator, camera and gripper is developed, which can be coupled to any UR by a quick release. Thus both camera aluminum profile stands can be omitted and the development environment becomes a mobile application.
 >> Why is the last step not done first? Fully integrated systems are difficult to program, because debugging requires access to the hardware at all times and complexity should be kept low (3 differentiable Raspberry Pi's instead of one single one)
 
+## Getting Started
+our Multi-Access Edge Computing Sandbox has been set up in the laboratory. For now a raspberry pi is connected to a PiCamera which shall be used to detect objects, calculate their contours/positions and even calibrate the camera position to a robots TCP simply by showing a QR-Code. Later we will add 3D cameras and neural network inferencing devices like an edge TPU from Google Coral.
+To get started, you can use your own laptop to develop applications or use the Raspberries in the laboratory (they are all set up).
 
+The first steps to prepare your computers for coding could be to:
+1. Install [GitHub for Desktop](https://desktop.github.com/)
+2. Install the [Atom IDE](https://atom.io/)
+3. Clone the repository with GitHub for Desktop using the link of this repository (https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox.git)
+4. Install [Python](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) (Version 3.7)
+>> while walking through the install wizard make sure to enable PATH
+![activate PATH](https://datatofish.com/wp-content/uploads/2018/10/0001_add_Python_to_Path.png)
+5. Install some libraries by opening the Terminal (on Windows: search for cmd in the start-search) and execute the following commands:
+```
+pip install opencv-python
+pip install numpy
+pip install scipy
+```
+6. Run a test program:
+>> The most basic and the easy way to run Python scripts is by using the python command. You need to open a command-line and type the word python followed by the path to your script file, like this: (GitHub Desktop will show you where it cloned the repository to)
+```python C:\Users\fabian\Documents\GitHub\MEC-Sandbox\contour_detector.py```
+Then you hit the ENTER button from the keyboard and that's it. You can see now your webcam-stream on the screen. Stop the program by hitting q on your keyboard. Congrats! You just ran your first Python script.
+
+7. dive into Python and learn to code. 
+>>Check out our [Teams-Board](https://teams.microsoft.com/l/entity/com.microsoft.teamspace.tab.planner/_djb2_msteams_prefix_921253025?context=%7B%22subEntityId%22%3Anull%2C%22channelId%22%3A%2219%3Ab3c07338ca614247a2fc1ed8ee32d4ff%40thread.tacv2%22%7D&groupId=5477e372-0e90-4ce4-942c-5a6c484efea7&tenantId=509b255b-13b3-4af4-bd94-9536cca3c61f) to find a course on Python, GitHub and OpenCV that gets you started and enables you to adapt the code (Members only). 
+
+Everybody is invited to tackle the tasks below and upgrade the code. To do so it is best if you join the GitHub Team (yes, another account has to be created...). Here we can collaborate on the codebase like real developers without breaking anything.
+--> Send me an E-Mail to join the repository and collaborate.
+With GitHub Desktop and Atom you can commit new Code to the GitHub-Cloud and synchronize the latest changes.
+
+Whoever has some code, no matter what language, that can be shipped (like webservers for object detection @Kai), feel free to share within the GitHub repository. It might be useful to have a codebase that features all the code of the chair of automation in one place. We can even keep the repository private so only staff and students can access the content. (However for now it will be open to public for an easier access)
 
 ## Tasks
 #### 1. Develop a contour detector 
