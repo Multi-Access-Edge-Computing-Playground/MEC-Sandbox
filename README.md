@@ -29,7 +29,7 @@ pip install numpy
 pip install scipy
 ```
 6. Run a test program:
->> The most basic and the easy way to run Python scripts is by using the python command. You need to open a command-line and type the word python followed by the path to your script file, like this: (GitHub Desktop will show you where it cloned the repository to)
+>> The most basic and the easy way to run Python scripts is by using the python command. You need to open a command-line and type the word python followed by the path to your script file (GitHub Desktop will show you where it cloned the repository to), like this: 
 ```python C:\Users\fabian\Documents\GitHub\MEC-Sandbox\contour_detector.py```
 Then you hit the ENTER button from the keyboard and that's it. You can see now your webcam-stream on the screen. Stop the program by hitting q on your keyboard. Congrats! You just ran your first Python script.
 
