@@ -61,7 +61,7 @@ Start coding in the File [qr_code_detector.py](qr_code_detector.py)
 
 Try to use cv2.getPerspectiveTransform on the four edges of the qr-code in relation to a standard square. Use [PyImagesSearch's](https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/) solution (and credit him in the code). 
 
-```cv2.getPerspectiveTransform``` returns a rotation matrix which we can transform into a roation vector with Scipy. Therefore use 
+```cv2.getPerspectiveTransform``` returns a rotation matrix which we can transform into a rotation vector with Scipy (rotation vector is the way a universal robot defines n orientation in the workspace). Therefore use 
 ```
 dst = np.array([
            [0, 0],
@@ -71,6 +71,8 @@ dst = np.array([
 M = cv2.getPerspectiveTransform(the_four_corner_points_of_the_qr_code, dst) # returns a 3x3 matrix 
 rotation_vector = R.from_matrix(M).as_rotvec(degrees=True) # returns [Rx,Ry,Rz]
 ```   
+(You will find this code context in the above [PyImagesSearch's](https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/) solution)
+
 When we feed the ```rotation_vector``` Variable to the robot (Universal Robots UR5) we will be able to calibrate the robot to the external camera and even create AR-Applications
 Wrap the whole code into a function that returns 
 * the pixel coordinate of the middle of the qr-code
