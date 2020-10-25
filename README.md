@@ -58,8 +58,9 @@ Kind of like the below image (notice the coordinate system, thats what we want t
 ![QR-Code_Rotation](https://visp-doc.inria.fr/doxygen/visp-daily/img-pose-qrcode.jpg)
 
 Start coding in the File [qr_code_detector.py](qr_code_detector.py)
-
-Try to use cv2.getPerspectiveTransform on the four edges of the qr-code in relation to a standard square. Use [PyImagesSearch's](https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/) solution (and credit him in the code). 
+1.) Start working through [this Tutorial](https://www.learnopencv.com/opencv-qr-code-scanner-c-and-python/) and try to run the code on your System. 
+2.) Adapt the program so that it reads a videostream from the webcam (check out google for the ```cv2.VideoCapture()``` class) to track a QR-Code.
+3.) Try to use cv2.getPerspectiveTransform on the four edges of the qr-code in relation to a standard square. Use [PyImagesSearch's](https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/) solution (and credit the source in the code). 
 
 ```cv2.getPerspectiveTransform``` returns a rotation matrix which we can transform into a rotation vector with Scipy (rotation vector is the way a universal robot defines n orientation in the workspace). Therefore use 
 ```
