@@ -4,7 +4,8 @@ import numpy as np
 import time
 import sys
 from scipy.spatial.transform import Rotation as R
-cap = cv2.VideoCapture(0)
+camera_id = 0 #Change this ID if camera images can't be read or wrong camera was used.
+cap = cv2.VideoCapture(camera_id)
 time.sleep(0.5) #heat up the Sensor
 frame_count=0
 framerate=0
