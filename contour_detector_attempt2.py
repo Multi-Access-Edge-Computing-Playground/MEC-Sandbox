@@ -43,10 +43,12 @@ def getOrientation(pts, img):
 
     #erstellt an der Mitte der Rechtecke einen gelben Punkt
     cv.circle(img, centre, 3, (0, 255, 255), 2)
+    #achsen
     p1 = (centre[0] + 0.02 * eigenvektoren[0,0] * eigenwerte[0,0], centre[1] + 0.02 * eigenvektoren[0,1] * eigenwerte[0,0])
     p2 = (centre[0] - 0.02 * eigenvektoren[1,0] * eigenwerte[1,0], centre[1] - 0.02 * eigenvektoren[1,1] * eigenwerte[1,0])
     drawAxis(img, centre, p1, (0, 0, 255), 1)
     drawAxis(img, centre, p2, (255, 255, 0), 5)
+
     #Orientierung am Winkel in radiant
     angle = atan2(eigenvektoren[0,1], eigenvektoren[0,0])
     #Output: Winkel in Degree
