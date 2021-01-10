@@ -1,0 +1,8 @@
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[267.55, 265.4, 177.448, 213.575, 186.333, 34.982, 269.921],speed=speedj)
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[258.146, 263.791, 79.082, 233.233, 173.541, 63.965, 178.723],speed=speedj)
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[235.447, 265.103, 86.313, 213.584, 170.83, 239.68, 178.675],speed=speedj)
+success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.008, -0.555, 0.253, 88.106, 2.153, 8.451],speed=speedl)
+GRIPPER_ACTION
+success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.003, -0.555, 0.377, 88.107, 2.155, 8.496],speed=speedl)
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[217.115, 287.757, 83.895, 268.331, 209.21, 38.784, 171.332],speed=speedj)
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[173.883, 293.448, 175.558, 276.7, 184.185, 69.296, 271.72],speed=speedj)
