@@ -1,5 +1,5 @@
 # import the necessary packages
-from singlemotiondetector import SingleMotionDetector
+from pyimagesearch.motion_detection.singlemotiondetector import SingleMotionDetector
 from imutils.video import VideoStream
 from flask import Response
 from flask import Flask
@@ -21,6 +21,7 @@ app = Flask(__name__)
 # initialize the video stream and allow the camera sensor to
 # warmup
 # vs = VideoStream(usePiCamera=1).start()
+
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 
@@ -90,12 +91,12 @@ def generate():
             if outputFrame is None:
                 continue
             # encode the frame in JPEG format
-            (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
+            (flag, encodedImage) = cv2.imencode(".mp4", outputFrame)
             # ensure the frame was successfully encoded
             if not flag:
                 continue
         # yield the output frame in the byte format
-        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
+        yield (b'--frame\r\n' b'Content-Type: video/mp4\r\n\r\n' +
                bytearray(encodedImage) + b'\r\n')
 
 
@@ -103,8 +104,7 @@ def generate():
 def video_feed():
     # return the response generated along with the specific media
     # type (mime type)
-    return Response(generate(),
-                    mimetype="multipart/x-mixed-replace; boundary=frame")
+    return Response(generate(), mimetype="multipart/x-mixed-replace; boundary=frame")
 
 
 # check to see if this is the main thread of execution
