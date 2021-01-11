@@ -1,2 +1,0 @@
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[231.99, 258.45, 73.53, 217.68, 159.17, 245.89, 181.5],speed=speedj)
-success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.006, -0.536, 0.191, 88.99, 1.239, 7.97],speed=speedl)

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Webcam Livestream</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">   </script>
+    <script src="js/bootstrap.min.js"></script>
+    <img src="{{ url_for('video_feed') }}">
+    <img src="https://www.b-tu.de/typo3conf/ext/btu_template/Resources/Public/Images/logo/BTULogo_deutsch_grau_2x.png">
+
+</body>
+</html>

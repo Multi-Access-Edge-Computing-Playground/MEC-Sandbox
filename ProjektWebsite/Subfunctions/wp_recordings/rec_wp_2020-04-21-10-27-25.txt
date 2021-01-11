@@ -1,8 +1,0 @@
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[89.695, 336.743, 176.642, 232.288, 180.629, 70.981, 272.165],speed=speedj)
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[91.583, 23.663, 174.547, 265.846, 180.949, 35.446, 272.106],speed=speedj)
-success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.01796681061387062, -0.6095998287200928, 0.2607220709323883, -89.98168182373047, -176.41896057128906, 178.88327026367188],speed=speedl)
-success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.015759950503706932, -0.6483935713768005, 0.2543827295303345, -91.34257507324219, 178.12986755371094, 178.2921905517578],speed=speedl)
-GRIPPER_ACTION
-success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.016505524516105652, -0.65036940574646, 0.38649141788482666, -92.8912353515625, 178.2748565673828, 179.34559631347656],speed=speedl)
-success &= highlevel_movements.move_to_waypoint_linear(base, base_cyclic,[0.07478067278862, -0.1246325895190239, 0.8614432215690613, 90.16726684570312, 9.310687065124512, 5.854083061218262],speed=speedl)
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[179.62, 307.879, 172.652, 289.174, 180.408, 69.243, 272.359],speed=speedj)

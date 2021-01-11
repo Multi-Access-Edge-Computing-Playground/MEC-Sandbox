@@ -1,0 +1,1 @@
+success &= highlevel_movements.angular_action_movement(e,base,base_cyclic,joint_positions=[83.98, 349.54, 21.17, 272.16, 271.13, 255.1, 189.97],speed=speedj)

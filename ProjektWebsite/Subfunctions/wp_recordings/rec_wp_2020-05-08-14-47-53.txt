@@ -1,2 +1,0 @@
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[257.64, 246.34, 31.6, 218.63, 214.63, 98.69, 129.78],speed=speedj)
-success &= highlevel_movements.angular_action_movement(base,joint_positions=[233.73, 265.96, 71.5, 212.18, 349.19, 70.11, 8.31],speed=speedj)
