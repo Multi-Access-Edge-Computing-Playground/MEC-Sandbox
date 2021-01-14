@@ -1,5 +1,4 @@
-# import the necessary packages
-from pyimagesearch.motion_detection import SingleMotionDetector
+from pyimagesearch.motion_detection.singlemotiondetector import SingleMotionDetector
 from imutils.video import VideoStream
 from flask import Response
 from flask import Flask
@@ -24,10 +23,6 @@ app = Flask(__name__)
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 
-@app.route("/")
-def index():
-	# return the rendered template
-	return render_template("index.html")
 
 def detect_motion(frameCount):
 	# grab global references to the video stream, output frame, and
@@ -37,8 +32,7 @@ def detect_motion(frameCount):
 	# read thus far
 	md = SingleMotionDetector(accumWeight=0.1)
 	total = 0
-
-# loop over frames from the video stream
+    # loop over frames from the video stream
 	while True:
 		# read the next frame from the video stream, resize it,
 		# convert the frame to grayscale, and blur it
@@ -47,27 +41,7 @@ def detect_motion(frameCount):
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 		gray = cv2.GaussianBlur(gray, (7, 7), 0)
 		# grab the current timestamp and draw it on the frame
-		timestamp = datetime.datetime.now()
-		cv2.putText(frame, timestamp.strftime(
-			"%A %d %B %Y %I:%M:%S%p"), (10, frame.shape[0] - 10),
-			cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
-
-
-
-            # if the total number of frames has reached a sufficient
-		# number to construct a reasonable background model, then
-		# continue to process the frame
-		if total > frameCount:
-			# detect motion in the image
-			motion = md.detect(gray)
-			# check to see if motion was found in the frame
-			if motion is not None:
-				# unpack the tuple and draw the box surrounding the
-				# "motion area" on the output frame
-				(thresh, (minX, minY, maxX, maxY)) = motion
-				cv2.rectangle(frame, (minX, minY), (maxX, maxY),
-					(0, 0, 255), 2)
-
+	
 		# update the background model and increment the total number
 		# of frames read thus far
 		md.update(gray)
@@ -77,6 +51,11 @@ def detect_motion(frameCount):
 		with lock:
 			outputFrame = frame.copy()
 
+
+@app.route("/")
+def index():
+	# return the rendered template
+	return render_template("index.html")
 
 def generate():
 	# grab global references to the output frame and lock variables
@@ -97,17 +76,13 @@ def generate():
 		# yield the output frame in the byte format
 		yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
 			bytearray(encodedImage) + b'\r\n')
+
 @app.route("/video_feed")
-
-
 def video_feed():
 	# return the response generated along with the specific media
 	# type (mime type)
 	return Response(generate(),
 		mimetype = "multipart/x-mixed-replace; boundary=frame")
-
-
-
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
 	# construct the argument parser and parse command line arguments
@@ -119,11 +94,12 @@ if __name__ == '__main__':
 	ap.add_argument("-f", "--frame-count", type=int, default=32,
 		help="# of frames used to construct the background model")
 	args = vars(ap.parse_args())
-	# start a thread that will perform motion detection
+    # start a thread that will perform motion detection
 	t = threading.Thread(target=detect_motion, args=(
 		args["frame_count"],))
 	t.daemon = True
 	t.start()
+
 	# start the flask app
 	app.run(host=args["ip"], port=args["port"], debug=True,
 		threaded=True, use_reloader=False)
