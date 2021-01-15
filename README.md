@@ -1,6 +1,10 @@
 # MEC-Sandbox (Multi-Access Edge Computing)
 A Playground to learn coding within a Multi-Access Edge Computing Application
-## The roadmap
+
+### Check out the above folders for Applications that suit your needs or wake your interest.
+Feel free to upload any Code that you created and remember to add a quick README.md with instructions on how to run your app.
+
+## The roadmap for the Sandbox - where are we heading
 * Step 1: Setting up an MVP (Minimum Viable Product): All Raspberry Pi's and cameras are accessible and programmable for users, the cameras are mounted on aluminum profile stands. the respective scripts on the Pi's are programmed monolithically (classic large code blocks). Three scripts are programmed (AI-based object/contour recognition, communication with robot and quality control with depth-image camera)
 * Step 2: Launch a project wiki: Newcomers should be able to familiarize themselves independently with the well-documented environment.
 * Step 2: transfer code blocks into Docker containers, demonstrate how quickly the programs can be deployed on new hardware without having to install tons of libraries.
