@@ -82,7 +82,7 @@ Wrap the whole code into a function that returns
 #### 3. Connect to the robot to use a QR-Code to calibrate and then pick up a cube with the contour detector
 lets hoock up to the Universal Robots UR5
 
-![UR5 on MiR](models/Mir_01.jpg)
+![UR5 on MiR](Use_trained_MobileNet_to_detect_objects/models/Mir_01.jpg)
 
 ... to be continued
 
