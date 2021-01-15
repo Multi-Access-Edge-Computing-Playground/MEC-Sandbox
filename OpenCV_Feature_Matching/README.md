@@ -7,7 +7,19 @@ Do the following steps:
 - this is the "train" image.
 2. Specify the path to both images in the script and execute it. The script displays only the matched features.
 
+See result below:
+
+![feature.jpg](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature.jpg)
+
 To extract the bounding Box of the object in the "train" image, use the script [feature_matching_w_bounding_box.py](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature_matching_w_bounding_box.py)
 The pixel coordinates can then be processed into robot coordinates (comming soon)
 
-To detect multiple objects, use the 
+See result below:
+
+![feature_detect.jpg](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature_detect.jpg)
+
+To detect multiple objects, use the [feature_matching_multiple.py](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature_matching_multiple.py). Add the paths to the query images of all the objects to the ```objs``` array ```objs=['Obj1.jpg','Obj1.jpg','Obj3.jpg']```
+
+See results below:
+
+![feature_detect_multiple.jpg](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature_detect_multiple.jpg)
