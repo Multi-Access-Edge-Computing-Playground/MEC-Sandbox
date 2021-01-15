@@ -3,8 +3,7 @@ detected more exact which comes in handy when the robot is supposed to grab a sp
 Use the script [feature_matching_draw_matches.py](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/OpenCV_Feature_Matching/feature_matching_draw_matches.py)
 to test a feature matching algorithm with a custom object.
 Do the following steps:
-1. Take a picture of the object and crop it so that only the object is visible. This is the "query" image. Then take an image of the cluttered image where the object is located (maybe with other objects and hard to detect)
-- this is the "train" image.
+1. Take a picture of the object and crop it so that only the object is visible. This is the "query" image. Then take an image of the cluttered image where the object is located (maybe with other objects and hard to detect) - this is the "train" image.
 2. Specify the path to both images in the script and execute it. The script displays only the matched features.
 
 See result below:
