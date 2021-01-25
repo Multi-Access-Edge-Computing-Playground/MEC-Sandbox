@@ -8,7 +8,7 @@
 ```
 pip install moviepy
 ```
-6. Choose Videos and Logo:
+4. Choose Videos and Logo:
 put the video files that need a logo into the folder "Videos"
 put the logo next to this file
 open the file [wasserzeichen_add_logo_to_videos.py](wasserzeichen_add_logo_to_videos.py)
@@ -26,7 +26,7 @@ logo_height = 60 #pixels
 logo_margin_right =  0 #pixels
 logo_margin_bottom =  0 #pixels
 ```
-7. Run the Program
+5. Run the Program
 
 >> The most basic and the easy way to run Python scripts is by using the python command. You need to open a command-line and cd into the folder containing the python file like:
 ```
