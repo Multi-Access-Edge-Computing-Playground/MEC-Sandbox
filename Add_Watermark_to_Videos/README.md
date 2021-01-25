@@ -32,7 +32,7 @@ logo_margin_bottom =  0 #pixels
 ```
 cd C:\Users\fabian\Documents\GitHub\MEC-Sandbox\Add_Watermark_to_Videos
 ```
-the type the word python followed by the name of your script file, like this:
+then type the word python followed by the name of your script file, like this:
 ```
 python wasserzeichen_add_logo_to_videos.py
 ```
