@@ -5,7 +5,7 @@ import cv2 as cv
 import numpy as np
 import argparse
 from math import atan2, cos, sin, sqrt, pi, degrees
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(1)
 cap.set(10,100)
 kernel = np.ones((5,5),np.uint8)
 print("Press 'q' on your Keyboard to exit this program.")
