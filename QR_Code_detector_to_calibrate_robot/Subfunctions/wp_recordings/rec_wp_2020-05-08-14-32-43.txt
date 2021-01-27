@@ -1,0 +1,5 @@
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[249.81, 278.41, 81.13, 257.81, 194.14, 78.12, 260.46],speed=speedj)
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[260.44, 244.37, 30.58, 218.54, 212.81, 100.04, 125.74],speed=speedj)
+GRIPPER_ACTION
+GRIPPER_ACTION
+success &= highlevel_movements.angular_action_movement(base,joint_positions=[231.96, 257.25, 79.55, 212.18, 347.89, 118.39, 355.25],speed=speedj)

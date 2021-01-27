@@ -1,6 +1,7 @@
 
 import cv2
 import numpy as np
+from Subfunctions.WebcamVideoStream import WebcamVideoStream
 import time
 import sys
 from scipy.spatial.transform import Rotation as R

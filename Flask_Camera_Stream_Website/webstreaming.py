@@ -19,26 +19,15 @@ lock = threading.Lock()
 app = Flask(__name__)
 # initialize the video stream and allow the camera sensor to
 # warmup
-#cap = VideoStream(usePiCamera=1).start()
-cap = cv2.VideoCapture(0)
-
-if not cap.isOpened():
-    print("Cannot open camera")
-    exit()
-# set the resolution for the video stream
-def set_res(cap, x,y):
-    cap.set(3, int(x))
-    cap.set(4, int(y))
-    return str(cap.get(3)),str(cap.get(4))
-w, h = set_res(cap,1920,1080)
-print("height/width: ",h,"/",w)
-time.sleep(1.0)
+#vs = VideoStream(usePiCamera=1).start()
+vs = VideoStream(src=0).start()
+time.sleep(2.0)
 
 
 def detect_motion(frameCount):
 	# grab global references to the video stream, output frame, and
 	# lock variables
-	global cap, outputFrame, lock
+	global vs, outputFrame, lock
 	# initialize the motion detector and the total number of frames
 	# read thus far
 	md = SingleMotionDetector(accumWeight=0.1)
@@ -47,14 +36,12 @@ def detect_motion(frameCount):
 	while True:
 		# read the next frame from the video stream, resize it,
 		# convert the frame to grayscale, and blur it
-		ret, frame = cap.read()
-		height, width = frame.shape[:2]
-		#print("height/width: ",height,"/",width)
-		#frame = imutils.resize(frame, width=400)
+		frame = vs.read()
+		frame = imutils.resize(frame, width=400)
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 		gray = cv2.GaussianBlur(gray, (7, 7), 0)
 		# grab the current timestamp and draw it on the frame
-
+	
 		# update the background model and increment the total number
 		# of frames read thus far
 		md.update(gray)
@@ -117,4 +104,4 @@ if __name__ == '__main__':
 	app.run(host=args["ip"], port=args["port"], debug=True,
 		threaded=True, use_reloader=False)
 # release the video stream pointer
-cap.stop()
+vs.stop()

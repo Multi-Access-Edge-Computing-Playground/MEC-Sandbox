@@ -16,3 +16,6 @@ python contour_detector_webcam.py
 
 Exit:
 press q or left click the red 'X' of your command window or PowerShell window.
+
+Example picture of output view:
+![Window](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/feature/manthey/Projects/Contour_Detector/Example_pictures/window.jpg?raw=true)

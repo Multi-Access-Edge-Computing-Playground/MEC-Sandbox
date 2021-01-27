@@ -20,30 +20,41 @@
   </head>
   <body>
       
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                <img alt="Titel" src="https://gcsc.uni-frankfurt.de/biogas-network.de/abgeschlossene-projekte/methanoquant/partner/btu-cottbus-1/BTULogoStandardversiondeutschJPGSW.jpg" width="138,15" height="23,67">
-              </a>
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <img alt="Titel" src="https://gcsc.uni-frankfurt.de/biogas-network.de/abgeschlossene-projekte/methanoquant/partner/btu-cottbus-1/BTULogoStandardversiondeutschJPGSW.jpg" width="138,15" height="23,67">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+      
+      
+        <main> 
+            <div class="text-center">
+                <img src="{{ url_for('video_feed') }}">
             </div>
-          </div>
-        </nav>
-        <div class="text-center">
-            <img src="{{ url_for('video_feed') }}">
-        </div>
-        
+        </main>
+      
+      
+      
+      
+      
         <footer class="bg-light text-center text-lg-start">
-          <!-- Grid container -->
-
-
-          <!-- Copyright -->
-          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2021 Copyright:
-            <a class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)" href="https://www.b-tu.de/">BTU Cottbus-Senftenberg></a>
-          </div>
-          <!-- Copyright -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2021 Copyright:
+                <a class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)" href="https://www.b-tu.de/">BTU Cottbus-Senftenberg></a>
+            </div>
+            <!-- Copyright -->
         </footer>
+      
+        
+      
+       
 
     
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
