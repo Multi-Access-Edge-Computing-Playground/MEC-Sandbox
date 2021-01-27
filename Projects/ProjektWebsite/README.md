@@ -19,3 +19,11 @@ python webstreaming.py --ip 127.0.0.1 --port 5000
 Step 6:
 You can now go with your device on the website: http://127.0.0.1:5000
 There you can see your webcam video livestream.
+
+
+Example picture of the console:
+![Console](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/feature/manthey/Projects/ProjektWebsite/Example_pictures/Console.png?raw=true)
+
+
+Example pictue of the website:
+![Website](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/feature/manthey/Projects/ProjektWebsite/Example_pictures/Website.png?raw=true)
