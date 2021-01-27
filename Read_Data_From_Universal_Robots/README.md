@@ -5,3 +5,5 @@ Works with all robots (CB>3.4 or e-series).
 
 To receive data from a UR open [read_data_from_universal_robots.py](read_data_from_universal_robots.py) and change `ROBOT_HOST` to the IP of your robot or leave as `localhost` if you use URSim.
 Then run the script.
+
+You will receive data like TCP-Pose, Joint-Angles, Joint-Forces, TCP-Force-Vector
