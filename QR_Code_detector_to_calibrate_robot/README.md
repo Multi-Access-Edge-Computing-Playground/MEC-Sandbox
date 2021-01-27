@@ -16,3 +16,14 @@ python qr_code_detector.py
 
 Exit:
 press q or left click the red 'X' of your command window or PowerShell window.
+
+
+Example picture of the console: 
+![Console](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/QR_Code_detector_to_calibrate_robot/Example_pictures/console.png?raw=true)
+
+Some example pictures of the window view:
+![Window_view1](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/QR_Code_detector_to_calibrate_robot/Example_pictures/window_view1.png?raw=true)
+![Window_view2](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/QR_Code_detector_to_calibrate_robot/Example_pictures/window_view2.png?raw=true)
+
+Close up:
+![Close_up](https://github.com/Multi-Access-Edge-Computing-Playground/MEC-Sandbox/blob/master/QR_Code_detector_to_calibrate_robot/Example_pictures/close_up1.png?raw=true)
