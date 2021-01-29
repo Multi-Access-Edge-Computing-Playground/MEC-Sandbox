@@ -31,8 +31,30 @@ def find_draw_contours_calculate_px_pos_angle(imgThres,imgAnnotated):
         angle, middle_px = contour_detector.getOrientation(c, imgAnnotated)
         obj_middle_pts_list.append(middle_px)
         obj_angle_list.append(angle)
-    return imgAnnotated, obj_middle_pts_list, obj_angle_list
 
+        rects = [cv2.boundingRect(cnt) for cnt in contours]
+
+        #Calculate the combined bounding rectangle points.
+        top_x = min([x for (x, y, w, h) in rects])
+        top_y = min([y for (x, y, w, h) in rects])
+        bottom_x = max([x+w for (x, y, w, h) in rects])
+        bottom_y = max([y+h for (x, y, w, h) in rects])
+
+        dst = np.array([
+           [0, 0],
+           [maxWidth - 1, 0],
+           [maxWidth - 1, maxHeight - 1],
+           [0, maxHeight - 1]], dtype = "float32")
+        M = cv2.getPerspectiveTransform(top_x, top_y, bottom_x, bottom_y, dst) # returns a 3x3 matrix
+        rotation_vector = R.from_matrix(M).as_rotvec(degrees=True) # returns [Rx,Ry,Rz]
+
+
+
+
+
+
+
+    return imgAnnotated, obj_middle_pts_list, obj_angle_list, M, rotation_vector, dst
 def gray_blur_canny_thres_dilate_image(image,lower_thres=100,upper_thres=255):
     def auto_canny(image, sigma=0.33):
         # compute the median of the single channel pixel intensities
@@ -79,13 +101,27 @@ def paint(imageCopied, imgThres):
                     cv2.circle(imageCopied,tuple(points[0][i0]), 5, (0,0,255), 5)
         print(decodedText)
 
+def draw_axis(img, R, t, K):
+    # unit is mm
+    rotV, _ = cv2.Rodrigues(R)
+    points = np.float32([[100, 0, 0], [0, 100, 0], [0, 0, 100], [0, 0, 0]]).reshape(-1, 3)
+    axisPoints, _ = cv2.projectPoints(points, rotV, t, K, (0, 0, 0, 0))
+    img = cv2.line(img, tuple(axisPoints[3].ravel()), tuple(axisPoints[0].ravel()), (255,0,0), 3)
+    img = cv2.line(img, tuple(axisPoints[3].ravel()), tuple(axisPoints[1].ravel()), (0,255,0), 3)
+    img = cv2.line(img, tuple(axisPoints[3].ravel()), tuple(axisPoints[2].ravel()), (0,0,255), 3)
+    return img
+
+
+
+
 
 while True:
     image = cap.read()
     imageCopied = image.copy();
     imgThres = gray_blur_canny_thres_dilate_image(image)
-    imageCopied, obj_middle_pts_list, obj_angle_list = find_draw_contours_calculate_px_pos_angle(imgThres,imageCopied)
+    imageCopied, obj_middle_pts_list, obj_angle_list, M, rotation_vector, dst = find_draw_contours_calculate_px_pos_angle(imgThres,imageCopied)
     paint(imageCopied, imgThres)
+    draw_axis(imageCopied, M, rotation_vector, dst)
     #shows the WebcamVideoStream
     t1=time.time()
     frame_count+=1
