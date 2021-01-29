@@ -3,6 +3,7 @@ import contour_detector
 import numpy as np
 from Subfunctions.WebcamVideoStream import WebcamVideoStream
 from pyimagesearch.transform import *
+from scipy.spatial.transform import Rotation as R
 import time
 cap = WebcamVideoStream(1).start()
 time.sleep(0.5)
@@ -32,29 +33,48 @@ def find_draw_contours_calculate_px_pos_angle(imgThres,imgAnnotated):
         obj_middle_pts_list.append(middle_px)
         obj_angle_list.append(angle)
 
-        rects = [cv2.boundingRect(cnt) for cnt in contours]
 
-        #Calculate the combined bounding rectangle points.
-        top_x = min([x for (x, y, w, h) in rects])
-        top_y = min([y for (x, y, w, h) in rects])
-        bottom_x = max([x+w for (x, y, w, h) in rects])
-        bottom_y = max([y+h for (x, y, w, h) in rects])
+    return imgAnnotated, obj_middle_pts_list, obj_angle_list
 
+def matrix(imgThres,imgAnnotated):
+    contours, hierarchy = cv2.findContours(imgThres, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    for i, c in enumerate(contours):
+        area = cv2.contourArea(c)
+        object_hierarchy = hierarchy[0][i][3] # -1 means has no parent
+        if area < 50000 or area > 1000000 or object_hierarchy != -1:
+            #skip contour
+            continue
+        cv2.drawContours(imgAnnotated, contours, i, (255, 0, 0), 2)
+        # receive the angle and th emiddle pixel coordinate of the contour (object)
+        rect = orderPoints(c)
+        (tl, tr, br, bl) = rect
+            # compute the width of the new image, which will be the
+        	# maximum distance between bottom-right and bottom-left
+        	# x-coordiates or the top-right and top-left x-coordinate
+        widthA = np.sqrt(((br[0] - bl[0]) * 2) + ((br[1] - bl[1]) * 2))
+        widthB = np.sqrt(((tr[0] - tl[0]) * 2) + ((tr[1] - tl[1]) * 2))
+        maxWidth = max(int(widthA), int(widthB))
+        # compute the height of the new image, which will be the
+        # maximum distance between the top-right and bottom-right
+        # y-coordinates or the top-left and bottom-left y-coordinates
+        heightA = np.sqrt(((tr[0] - br[0]) * 2) + ((tr[1] - br[1]) * 2))
+        heightB = np.sqrt(((tl[0] - bl[0]) * 2) + ((tl[1] - bl[1]) * 2))
+        maxHeight = max(int(heightA), int(heightB))
         dst = np.array([
            [0, 0],
            [maxWidth - 1, 0],
            [maxWidth - 1, maxHeight - 1],
            [0, maxHeight - 1]], dtype = "float32")
-        M = cv2.getPerspectiveTransform(top_x, top_y, bottom_x, bottom_y, dst) # returns a 3x3 matrix
+
+
+
+        M = cv2.getPerspectiveTransform(rect, dst) # returns a 3x3 matrix
         rotation_vector = R.from_matrix(M).as_rotvec(degrees=True) # returns [Rx,Ry,Rz]
 
 
+    return M, rotation_vector, dst
 
 
-
-
-
-    return imgAnnotated, obj_middle_pts_list, obj_angle_list, M, rotation_vector, dst
 def gray_blur_canny_thres_dilate_image(image,lower_thres=100,upper_thres=255):
     def auto_canny(image, sigma=0.33):
         # compute the median of the single channel pixel intensities
@@ -119,7 +139,8 @@ while True:
     image = cap.read()
     imageCopied = image.copy();
     imgThres = gray_blur_canny_thres_dilate_image(image)
-    imageCopied, obj_middle_pts_list, obj_angle_list, M, rotation_vector, dst = find_draw_contours_calculate_px_pos_angle(imgThres,imageCopied)
+    imageCopied, obj_middle_pts_list, obj_angle_list = find_draw_contours_calculate_px_pos_angle(imgThres,imageCopied)
+    M, rotation_vector, dst = matrix(imgThres,imageCopied)
     paint(imageCopied, imgThres)
     draw_axis(imageCopied, M, rotation_vector, dst)
     #shows the WebcamVideoStream
